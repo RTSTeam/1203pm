@@ -19,6 +19,7 @@
         	authentication-failure-url="/index.html?login_error=1" 
         />
         <sec:logout logout-success-url="/index.html"  delete-cookies="JSESSIONID"/>
+        <sec:remember-me key="Remember_me"/>
 	</sec:http>
  	
 	<sec:authentication-manager alias="authenticationManager">

@@ -4,7 +4,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
-	<title>Cover</title>
+	<title>Railway</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<!--mobile version-->
 	<meta name="viewpoint" content="width=device-width, initial-scale=1.0">
@@ -26,7 +26,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="search">Railway Trading System</a>
+          <a class="navbar-brand" href="http://zhengjunli.com">Railway Trading System</a>
         </div>
 
         <div id="navbar" class="navbar-collapse collapse">
@@ -42,6 +42,11 @@
             </div>
             
 			<button id="signin" type="submit" class="btn btn-success">Sign In</button>
+			
+			<div class="form-group">
+			  <span style="color: white">Remember me:</span>
+              <input type="checkbox" name="_spring_security_remember_me" class="form-control"/>
+            </div>
           </form>
         </div><!--/.navbar-collapse -->
 
@@ -62,82 +67,7 @@
         <p><a class="btn btn-primary btn-lg" href="http://localhost:8080/RTSProject/registration.html" role="button">Sign up &raquo;</a></p>
       </div>
     </div>
-
-	    <!--search-->
-    <div class="Search">
-		<div class="row">
-			<div class="col-md-2">
-				&nbsp; &nbsp; <input id="onewayRadio" type="radio" ng-model="tripType" value="One Way"><label for="onewayRadio">One Way</label>
-			</div>
-			<div class="col-md-2">
-				&nbsp; &nbsp; <input id="roundtripRadio" type="radio" ng-model="tripType" value="Round Trip" /><label for="roundtripRadio">Round Trip</label>
-			</div>		 
-		</div>
-		<div>
-			<p>&nbsp; &nbsp; Selected trip:{{tripType}}</p>   
-		</div>
-		
-		<div>
-			&nbsp; &nbsp; <label for="departureStationSel">From:</label>
-			<select id="departureStationSel" ng-model="departureStationValue" ng-options="departureStation for departureStation in departureStationArray">
-			</select>
-		</div>
-		<div>
-			&nbsp; &nbsp; <label for="arrivalStationSel">To:</label>
-			<select id="arrivalStationSel" ng-model="arrivalStationValue" ng-options="arrivalStation for arrivalStation in arrivalStationArray">
-			</select>
-		</div>
-		
-		<div>
-			<p>&nbsp; &nbsp; Selected Departure: {{departureStationValue}}</p>
-			<p>&nbsp; &nbsp; Selected Arrival: {{arrivalStationValue}}</p>
-		</div>
-		<form name="timepickerForm" class="form-inline" role="form">
-			<!-- Datetime example -->
-			<div class="form-group">
-				&nbsp; &nbsp; <label class="control-label"><i class="fa fa-calendar"></i> Departure Time:</label><br>
-				<div class="form-group">
-					&nbsp; &nbsp; <input type="text" size="10" class="form-control" ng-model="sharedDate" data-autoclose="1" placeholder="Date" bs-datepicker>
-				</div>
-				<div class="form-group" class="col-md-2">
-					<input type="text" size="8" class="form-control" ng-model="sharedDate" data-autoclose="1" placeholder="Time" bs-timepicker>
-				</div>
-			</div>
-		</form>
-		
-		<form name="timepickerForm" class="form-inline" role="form" ng-show="tripType == 'Round Trip'">
-			<!-- Datetime example -->
-			<div class="form-group">
-				&nbsp; &nbsp; <label class="control-label"><i class="fa fa-calendar"></i> Return Time:</label><br>
-				<div class="form-group">
-					&nbsp; &nbsp; <input type="text" size="10" class="form-control" ng-model="sharedDate" data-autoclose="1" placeholder="Date" bs-datepicker>
-				</div>
-				<div class="form-group" class="col-md-2">
-					<input type="text" size="8" class="form-control" ng-model="sharedDate" data-autoclose="1" placeholder="Time" bs-timepicker>
-				</div>
-			</div>
-		</form>
-		
-		<br />
-		<div class="row">
-			<div class="col-md-1">&nbsp; &nbsp;<strong>Adults:</strong></div>
-			<div class="col-md-1"><strong>Seniors:</strong></div>
-			<div class="col-md-1"><strong>Children:</strong></div>
-		</div>
-		<div class="row">
-			<div class="col-md-1">&nbsp; &nbsp;<input type="number" min="0" max="10" value="{{adultsValue}}" ng-model="adultsValue"/></div>
-			<div class="col-md-1"><input type="number" min="0" max="10" value="{{seniorsValue}}" ng-model="seniorsValue"/></div>
-			<div class="col-md-1"><input type="number" min="0" max="10" value="{{childrenValue}}" ng-model="childrenValue"/></div>
-		</div>
-		
-		<br />
-		<div class="row">
-			<div class="col-md-2">&nbsp; &nbsp;<button type="button" class="btn btn-warning" ng-click="resetForm()">Reset</button></div>
-			<div class="col-md-2"><button type="submit" class="btn btn-success"ng-disabled="userForm.$invalid">Search</button></div>
-		</div>
-
-		<br />
-
+    
 		<footer>
         	<p style="color:white">&copy; Jack, Andy, Charlie 2014</p>
       	</footer>

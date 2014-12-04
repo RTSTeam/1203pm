@@ -24,15 +24,15 @@ var luhnChk = function(cc) {
 app.controller
   ( 'MainCtrl'
   , function($scope,$locale) {
-      $scope.currentYear = new Date().getFullYear()
-      $scope.currentMonth = new Date().getMonth() + 1
-      $scope.months = $locale.DATETIME_FORMATS.MONTH
-      $scope.ccinfo = {type:undefined}
+      $scope.currentYear = new Date().getFullYear();
+      $scope.currentMonth = new Date().getMonth() + 1;
+      $scope.months = $locale.DATETIME_FORMATS.MONTH;
+      $scope.ccinfo = {type:undefined};
       $scope.save = function(data){
         if ($scope.paymentForm.$valid){
-          console.log(data) // valid data saving stuff here
+          console.log(data); // valid data saving stuff here
         }
-      }
+      };
       $scope.ccinfo = {
       month: "",
       year: ""
@@ -48,17 +48,17 @@ app.directive
         { require: 'ngModel'
         , link: function(scope, elm, attrs, ctrl){
             scope.$watch('[ccinfo.month,ccinfo.year]',function(value){
-              ctrl.$setValidity('invalid',true)
+              ctrl.$setValidity('invalid',true);
               if ( scope.ccinfo.year == scope.currentYear
                    && scope.ccinfo.month <= scope.currentMonth
                  ) {
-                ctrl.$setValidity('invalid',false)
+                ctrl.$setValidity('invalid',false);
               }
-              return value
-            },true)
+              return value;
+            },true);
           }
-        }
-      return directive
+        };
+      return directive;
       }
     );
  
@@ -68,9 +68,9 @@ app.filter
       var filter = 
         function(arr, lower, upper) {
           for (var i = lower; i <= upper; i++) arr.push(i)
-          return arr
-        }
-      return filter
+          return arr;
+        };
+      return filter;
     }
   );
   
