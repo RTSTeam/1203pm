@@ -18,13 +18,10 @@
 	
     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
     <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-	
-	<!--
-    <link rel="stylesheet" href="http://mgcrea.github.io/angular-strap/styles/angular-motion.min.css">
-    <link rel="stylesheet" href="http://mgcrea.github.io/angular-strap/styles/bootstrap-additions.min.css">
-    <link rel="stylesheet" href="http://mgcrea.github.io/angular-strap/styles/libraries.min.css">
-    <link rel="stylesheet" href="http://mgcrea.github.io/angular-strap/styles/main.min.css">
-	-->
+    
+    <!-- credit card css -->
+    <link rel="stylesheet" href="css/creditcard.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular-resource.min.js"></script>
   </head>
   <body>
 
@@ -55,60 +52,56 @@
 	</tab>
     <tab heading="Search">
     <form name="userForm" class="css-form" ng-submit="submitData(user, 'ajaxResult')" novalidate>
-		<div class="row">
+		<div ng-show="false" class="row">
 			<div class="col-md-2">
-				&nbsp; &nbsp; <input id="onewayRadio" type="radio" ng-model="user.tripType" value="One Way"><label for="onewayRadio">One Way</label>
+				<input id="onewayRadio" type="radio" ng-model="user.tripType" value="One Way"><label for="onewayRadio">One Way</label>
 			</div>
 			<div class="col-md-2">
-				&nbsp; &nbsp; <input id="roundtripRadio" type="radio" ng-model="user.tripType" value="Round Trip" /><label for="roundtripRadio">Round Trip</label>
+				<input id="roundtripRadio" type="radio" ng-model="user.tripType" value="Round Trip" /><label for="roundtripRadio">Round Trip</label>
 			</div>		 
 		</div>
-		<div>
-			<p>&nbsp; &nbsp; Selected trip:{{user.tripType}}</p>   
-		</div>
 		
-		<div>
-			&nbsp; &nbsp; <label for="departureStationSel">From:</label>
-			<select id="departureStationSel" ng-model="user.departureStationValue" ng-options="departureStation for departureStation in departureStationArray">
+		<p></p>
+		<div class="controls">
+			<label for="departureStationSel">From:</label>
+			<select class="form-control" id="departureStationSel" ng-model="user.departureStationValue" ng-options="departureStation for departureStation in departureStationArray">
 			</select>
 		</div>
-		<div>
-			&nbsp; &nbsp; <label for="arrivalStationSel">To:&nbsp; &nbsp; &nbsp;</label>
-			<select id="arrivalStationSel" ng-model="user.arrivalStationValue" ng-options="arrivalStation for arrivalStation in arrivalStationArray">
+		<div class="controls">
+			<label for="arrivalStationSel">To:&nbsp; &nbsp; &nbsp;</label>
+			<select class="form-control" id="arrivalStationSel" ng-model="user.arrivalStationValue" ng-options="arrivalStation for arrivalStation in arrivalStationArray">
 			</select>
 		</div>
-		
-		<div>
-			<p>&nbsp; &nbsp; Selected Departure: {{user.departureStationValue}}</p>
-			<p>&nbsp; &nbsp; Selected Arrival: {{user.arrivalStationValue}}</p>
-		</div>
-		
-		<div>
-			&nbsp; &nbsp; <label class="control-label"><i class="fa fa-calendar"></i> Departure Time:</label><br>
+		<br />
+		<div class="controls">
+			<label class="control-label"><i class="fa fa-calendar"></i> Departure Time:</label><br>
 			<div class="form-group">
-				&nbsp; &nbsp; <input type="text" size="10" class="form-control" ng-model="user.departureDate" data-autoclose="1" placeholder="Date" bs-datepicker>
+				<input type="text" size="10" class="form-control" ng-model="user.departureDate" data-autoclose="1" placeholder="Date" bs-datepicker>
 			</div>
 			<div class="form-group" class="col-md-2">
 				<input type="text" size="8" class="form-control" ng-model="user.departureTime" data-autoclose="1" placeholder="Time" bs-timepicker>
 			</div>
 		</div>
-		
-		<br />
-		<div class="row">
-			<div class="col-md-1">&nbsp; &nbsp;<strong>Adults:</strong></div>
-			<div class="col-md-1"><strong>Seniors:</strong></div>
-			<div class="col-md-1"><strong>Children:</strong></div>
+		<div class="padding">
+			<div class="row">
+				<div class="col-md-1"><strong>Adults:</strong></div>
+				<div class="col-md-1"><strong>Seniors:</strong></div>
+				<div class="col-md-1"><strong>Children:</strong></div>
+			</div>
 		</div>
-		<div class="row">
-			<div class="col-md-1">&nbsp; &nbsp;<input type="number" min="0" max="10" value="{{user.adultsValue}}" ng-model="user.adultsValue"/></div>
-			<div class="col-md-1"><input type="number" min="0" max="10" value="{{user.seniorsValue}}" ng-model="user.seniorsValue"/></div>
-			<div class="col-md-1"><input type="number" min="0" max="10" value="{{user.childrenValue}}" ng-model="user.childrenValue"/></div>
+		<div class="padding">
+			<div class="row">
+				<div class="col-md-1"><input class="form-control" type="number" min="0" max="10" value="{{user.adultsValue}}" ng-model="user.adultsValue"/></div>
+				<div class="col-md-1"><input class="form-control" type="number" min="0" max="10" value="{{user.seniorsValue}}" ng-model="user.seniorsValue"/></div>
+				<div class="col-md-1"><input class="form-control" type="number" min="0" max="10" value="{{user.childrenValue}}" ng-model="user.childrenValue"/></div>
+			</div>
 		</div>
-		
 		<br />
-		<div class="row">
-			<div class="col-md-2">&nbsp; &nbsp;<button type="button" class="btn btn-warning" ng-click="resetForm()">Reset</button></div>
-			<div class="col-md-2"><button type="submit" class="btn btn-success"ng-disabled="userForm.$invalid">Search</button></div>
+		<div class="controls">
+			<div class="row">
+				<!-- <div class="col-md-2">&nbsp; &nbsp;<button type="button" class="btn btn-warning" ng-click="resetForm()">Reset</button></div> -->
+				<div class="col-md-4"><button type="submit" class="btn btn-success" ng-disabled="userForm.$invalid">Find Trains</button></div>
+			</div>
 		</div>
 		<pre>form = {{user | json}}</pre>
 	</form>
@@ -135,7 +128,7 @@
           			<td>{{(user.adultsValue + user.seniorsValue + user.childrenValue) * ticket.price}} Dollars</td>
           			<td>
           				<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">Buy</button>
-						<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div ng-controller="MainCtrl" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 					    	<div class="modal-dialog">
 					    		<div class="modal-content">
 							      <div class="modal-header">
@@ -143,31 +136,68 @@
 							        <h4 class="modal-title" id="myModalLabel">Enter Credit Card Information:</h4>
 							      </div>
 							      <div class="modal-body">
-							      	<form role="form">
-									  <div class="form-group">
-									    <label for="cardNumber">Credit Card Number</label>
-									    <input type="text" class="form-control" ng-model="card.cardNumber" id="cardNumber" placeholder="Enter Card Number">
-									  </div>
-									  <div class="form-group">
-									    <label for="csv">CSV</label>
-									    <input type="password" class="form-control" ng-model="card.csv" id="csv" placeholder="CSV">
-									  </div>
-									  <div class="form-group">
-									    <label for="holdername">Holder Name</label>
-									    <input type="password" class="form-control" ng-model="card.holderName" id="holdername" placeholder="Card Holder Name">
-									  </div>
-									  <div class="form-group">
-									    <select ng-model="card.month" name="month" data-card-expiration required>
-									      <option disabled selected value="">Month</option>
-									    </select>
-									    <select ng-model="card.year" name="year" required>
-									      <option disabled selected value="">Year</option>
-									    </select>
-									  </div>
-									  <div class="form-group">
-									    <label for="ticketid">{{ticket.ticketID}}</label>
-									  </div>
-									</form>
+							      	<form novalidate name="paymentForm" ng-controller="MainCtrl">
+									    <input
+									      class="form-control"
+									      type="text"
+									      name="creditCard"
+									      ng-model="ccinfo.number"
+									      required
+									      data-credit-card-type
+									      data-ng-pattern="/^[0-9]+$/"
+									      data-ng-minlength="15"
+										  ng-model-options="{ updateOn: 'blur' }" 
+									      luhn-check
+										  maxlength="19"
+									      placeholder="Card Number" >{{ccinfo.type}}
+											  <span ng-show="paymentForm.creditCard.$error.pattern">Credit card must consist of only numbers</span>
+											  <span ng-show="paymentForm.creditCard.$error.minlength">Credit card must be 15-19 digits</span>
+											  <span ng-show="paymentForm.creditCard.$error.invalid">Credit card must be a valid Amex, Visa, Discover, or Master Card</span>
+											  <span ng-show="paymentForm.creditCard.$error['luhn-check']" class='error'>Error: failed Luhn check</span>
+											  <span ng-show="paymentForm.creditCard.required && paymentForm.creditCard.$pristine">Credit Card number required</span>
+										<br/>
+									    <input
+									      class="form-control"
+									      type="text"
+									      name="securityCode"
+									      ng-model="ccinfo.securityCode"
+									      placeholder="CCV"
+									      required
+									      data-ng-pattern="/^[0-9]+$/"
+									      data-ng-minlength="3"
+									      maxlength="4">
+									    
+									    <div ng-show="paymentForm.submitAttempt && !paymentForm.$valid">
+										  <div ng-show="myForm.number.$error['luhn-check']" class='error'>Invalid card number</div>	
+									      <div ng-show="paymentForm.securityCode.$error.pattern">Security code must contain only numbers</div>
+									      <div ng-show="paymentForm.securityCode.$error.minlength">Security code must be 3-4 digits</div>
+									      <div ng-show="paymentForm.securityCode.$error.required">Security code required</div>
+									    </div>
+										
+										<br/>
+										<div class="widthcontrols">
+										    <select class="form-control" ng-model="ccinfo.month" name="month" data-card-expiration required>
+										      <option disabled selected value="">Month</option>
+										      <option ng-repeat="month in months" value="{{$index+1}}" > {{$index+1}} - {{month}}</li>
+										    </select>
+									    </div>
+									    <br/>
+									    <ul ng-show="paymentForm.submitAttempt && !paymentForm.$valid">
+									      <li ng-show="paymentForm.month.$error.required">Expiration month required</li>
+									    </ul>
+									    <div class="widthcontrols">
+										    <select class="form-control" ng-model="ccinfo.year" name="year" required>
+										      <option disabled selected value="">Year</option>
+										      <option ng-repeat="year in [] | range:currentYear:currentYear+13">{{year}}</li>
+										    </select>
+									    </div>
+									    <br/>
+									    <ul ng-show="paymentForm.submitAttempt && !paymentForm.$valid">
+									      <li ng-show="paymentForm.year.$error.required">Expiration year required</li>
+									      <li ng-show="paymentForm.month.$error.invalid">Provided expiration date is invalid</li>
+									    </ul>
+									
+									  </form>
 							      </div>
 							      <div class="modal-footer">
 							        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -189,7 +219,7 @@
 	</tab>
     <!-- <tab heading="History" ng-click="getAlert()">  -->
 	
-	<tab heading="Transaction History" ng-click="getTransactionData('223', 'ajaxResult')">
+	<tab heading="Transaction History" ng-click="getTransactionData('${userid}', 'ajaxResult')">
 		<div ng-show="canShow">
 		<h2><font color="green" id="welcome">{{welcomeMsg}}</font></h2>
 		<table border="1" width="200">

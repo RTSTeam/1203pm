@@ -1,9 +1,19 @@
+.controls {
+	width:300px;
+	padding-left: 20px;
+}
+.padding {
+    padding-left: 20px;
+}
+.widthcontrols {
+	width:100px;
+}
 input.ng-invalid.ng-dirty {
-  background-color: #FA787E;
+	background-color: #FA787E;
 }
  
 input.ng-valid.ng-dirty {
-  background-color: #78FA89;
+	background-color: #78FA89;
 }
  
 ul {
