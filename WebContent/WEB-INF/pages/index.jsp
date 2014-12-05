@@ -9,11 +9,10 @@
 	<!--mobile version-->
 	<meta name="viewpoint" content="width=device-width, initial-scale=1.0">
 	<link href = "css/bootstrap.min.css" rel="stylesheet">
-	<link href = "css/styles.css" rel="stylesheet">
 	<!-- search css -->
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
-	
+
 </head>
 
 <body>
@@ -46,8 +45,8 @@
 			<button id="signin" type="submit" class="btn btn-success">Sign In</button>
 			
 			<div class="form-group">
-			  <span style="color: white">Remember me:</span>
-              <input type="checkbox" name="_spring_security_remember_me" class="form-control"/>
+			  <label for="rememberme" style="color: white">Remember me:</label>
+              <input type="checkbox" name="_spring_security_remember_me" id="rememberme"/>
             </div>
           </form>
         </div><!--/.navbar-collapse -->
@@ -79,9 +78,9 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/login.js"></script>
+	<script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 	
 	<!-- search js -->
-	<script src="js/search.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
     <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.0.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js"></script>
