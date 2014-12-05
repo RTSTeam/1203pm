@@ -24,6 +24,8 @@
     	<property name="dataSource" ref="dataSource"/>
     </bean>
     
+    <bean id="CheckoutService" class="com.mercury.service.CheckoutService" autowire="byType"/>
+    
     <bean id="personinfoService" class="com.mercury.service.PersoninfoService" autowire="byType"/>
     <bean id="personinfoDao" class="com.mercury.dao.impl.PersoninfoDaoImpl">
     	<property name="dataSource" ref="dataSource"/>

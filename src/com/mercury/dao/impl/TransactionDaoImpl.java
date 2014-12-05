@@ -15,17 +15,17 @@ import com.mercury.dao.TransactionDao;
 public class TransactionDaoImpl implements TransactionDao {
 
 	private SimpleJdbcTemplate template;
-	
+
 	public void setDataSource(DataSource dataSource) {
 		template = new SimpleJdbcTemplate(dataSource);
 	}
-	
+
 	@Override
 	public List<Transaction> queryTransactions(String userid) {
 		// TODO Auto-generated method stub
 		String sql = "SELECT * FROM transactions where userid=?";
 		Object[] params = {userid};
-		
+
 		return template.query(sql, new RowMapper<Transaction>() {
 			@Override
 			public Transaction mapRow(ResultSet rs, int line) throws SQLException {
@@ -34,14 +34,21 @@ public class TransactionDaoImpl implements TransactionDao {
 				transaction.setTranID(rs.getInt("tranid"));
 				transaction.setUserID(rs.getString("userid"));
 				transaction.setTicketID(rs.getInt("ticketid"));
-				transaction.setPassengerType(rs.getString("passengertype"));
 				transaction.setPrice(rs.getDouble("price"));
-				transaction.setQyt(rs.getInt("qty"));
+				transaction.setQty(rs.getInt("qty"));
 				transaction.setTranType(rs.getString("trantype"));
-				transaction.setReservation(rs.getInt("reservationnum"));
 				return transaction;
 			}			
 		}, params);
+	}
+
+	@Override
+	public void save(Transaction transaction) {
+		// TODO Auto-generated method stub
+		Object[] params = {transaction.getUserID(), transaction.getTicketID(), 
+				transaction.getPrice(), transaction.getQty(), transaction.getTranType()};
+		String sql = "insert into transactions values((select Max(tranid)+1 from transactions),?,?,?,?,?)";
+		template.update(sql, params);
 	}
 
 }

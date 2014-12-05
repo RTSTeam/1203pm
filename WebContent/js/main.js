@@ -133,6 +133,36 @@ app.controller('SearchCtrl', function ($scope, $window, $http) {
 			$scope[resultVarName] = "SUBMIT ERROR";
 		});
 	};
+	
+	// Checkout
+	$scope.checkouts = [];
+	$scope.checkout = function (userid, ticket, resultVarName) {
+		var params = $.param({ 	
+			userid: userid,
+			ticketid: ticket.ticketID,
+			price: ticket.price,
+			qty: ticket.qty,
+		});
+		$http({
+			method: "POST",
+			url: "http://localhost:8080/RTSProject/rest/checkout",
+			data: params,
+			headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+		}).success(function (data, status, headers, config) {
+			$scope[resultVarName] = data;
+			if(angular.isArray(data.checkout)){
+				$scope.checkouts = data.checkout;
+			} else if(data.checkout==null){
+			}
+			else{
+				$scope.checkouts[0]=data.checkout;
+			}
+
+		}).error(function (data, status, headers, config) {
+			$scope[resultVarName] = "SUBMIT ERROR";
+		});
+	};
+
 
 	$scope.getAlert = function () {
 		$window.alert("hi");

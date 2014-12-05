@@ -4,11 +4,10 @@ public class Transaction {
 	private int tranID;
 	private String userID;
 	private int ticketID;
-	private String passengerType;
 	private double price;
-	private int qyt;
+	private int qty;
 	private String tranType;
-	private int reservation;
+	
 	public int getTranID() {
 		return tranID;
 	}
@@ -27,35 +26,24 @@ public class Transaction {
 	public void setTicketID(int ticketID) {
 		this.ticketID = ticketID;
 	}
-	public String getPassengerType() {
-		return passengerType;
-	}
-	public void setPassengerType(String passengerType) {
-		this.passengerType = passengerType;
-	}
+	
 	public double getPrice() {
 		return price;
 	}
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	public int getQyt() {
-		return qyt;
+	public int getQty() {
+		return qty;
 	}
-	public void setQyt(int qyt) {
-		this.qyt = qyt;
+	public void setQty(int qyt) {
+		this.qty = qyt;
 	}
 	public String getTranType() {
 		return tranType;
 	}
 	public void setTranType(String tranType) {
 		this.tranType = tranType;
-	}
-	public int getReservation() {
-		return reservation;
-	}
-	public void setReservation(int reservation) {
-		this.reservation = reservation;
 	}
 	
 	
