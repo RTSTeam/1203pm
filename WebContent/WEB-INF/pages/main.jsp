@@ -93,6 +93,7 @@
 				<div class="col-md-1"><input class="form-control" type="number" min="0" max="10" value="{{user.seniorsValue}}" ng-model="user.seniorsValue"/></div>
 				<div class="col-md-1"><input class="form-control" type="number" min="0" max="10" value="{{user.childrenValue}}" ng-model="user.childrenValue"/></div>
 			</div>
+
 		</div>
 		<br />
 		<div class="controls">
@@ -199,7 +200,7 @@
 							      </div>
 							      <div class="modal-footer">
 							        <button type="button" class="btn btn-default" ng-click='hideShow()' data-dismiss="modal">Close</button>
-							        <button type="button" class="btn btn-primary" ng-click="hideShow(); checkout('${userid}',ticket, 'ajaxResult')" data-dismiss="modal">Confirmed</button>
+							        <button type="button" class="btn btn-primary" ng-click="hideShow(); checkout('${userid}', user, ticket, 'ajaxResult')" data-dismiss="modal">Confirmed</button>
 							      </div>
 					    		</div>
 					  		</div>

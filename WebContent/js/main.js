@@ -42,7 +42,7 @@ app.controller('SearchCtrl', function ($scope, $window, $http) {
 		$scope.canShow = false;
 	};
 	
-	//	core function
+	// Search Ticket
 	$scope.submitData = function (ticket, resultVarName) {
 		var params = $.param({ 	
 			tripType: ticket.tripType,
@@ -106,7 +106,8 @@ app.controller('SearchCtrl', function ($scope, $window, $http) {
 			$scope[resultVarName] = "SUBMIT ERROR";
 		});
 	};
-	//Personal information
+	
+	// Personal information
 	$scope.personinfos = [];
 	$scope.getPersonInfoData = function(useridinput, resultVarName) {
 		var params = $.param({ 	
@@ -136,12 +137,12 @@ app.controller('SearchCtrl', function ($scope, $window, $http) {
 	
 	// Checkout
 	$scope.checkouts = [];
-	$scope.checkout = function (userid, ticket, resultVarName) {
+	$scope.checkout = function (userid, user, ticket, resultVarName) {
 		var params = $.param({ 	
 			userid: userid,
 			ticketid: ticket.ticketID,
 			price: ticket.price,
-			qty: ticket.qty,
+			qty: $scope.user.adultsValue + $scope.user.seniorsValue + $scope.user.childrenValue 
 		});
 		$http({
 			method: "POST",
