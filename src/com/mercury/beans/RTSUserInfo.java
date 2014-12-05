@@ -1,17 +1,21 @@
 package com.mercury.beans;
 
+import java.util.List;
+
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class RTSUserInfo {
-	private String msg;
-
-	public String getMsg() {
-		return msg;
+	private List<RTSUser> personinfos;
+	
+	@XmlElement(name="personinfo")
+	public List<RTSUser> getPersoninfos() {
+		return personinfos;
 	}
 
-	public void setMsg(String msg) {
-		this.msg = msg;
+	public void setPersoninfos(List<RTSUser> personinfos) {
+		this.personinfos = personinfos;
 	}
 	
 }

@@ -47,9 +47,7 @@
 		</div>
 	</nav>
   <tabset>
-    <tab heading="Personal Information">
-		<p>Justified content</p>
-	</tab>
+    
     <tab heading="Search">
     <form name="userForm" class="css-form" ng-submit="submitData(user, 'ajaxResult')" novalidate>
 		<div ng-show="false" class="row">
@@ -200,8 +198,8 @@
 									  </form>
 							      </div>
 							      <div class="modal-footer">
-							        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-							        <button type="button" class="btn btn-primary" ng-click="checkout(user, 'ajaxResult')">Confirmed</button>
+							        <button type="button" class="btn btn-default" ng-click='hideShow()' data-dismiss="modal">Close</button>
+							        <button type="button" class="btn btn-primary" ng-click="hideShow(); checkout(user, 'ajaxResult')" data-dismiss="modal">Confirmed</button>
 							      </div>
 					    		</div>
 					  		</div>
@@ -212,38 +210,63 @@
       		</tbody>
 		</table>
 	</div>
-	
-	<!-- Credit Card Modal -->
-	
-   
 	</tab>
-    <!-- <tab heading="History" ng-click="getAlert()">  -->
 	
+	<!-- Transaction History -->
 	<tab heading="Transaction History" ng-click="getTransactionData('${userid}', 'ajaxResult')">
 		<div ng-show="canShow">
-		<h2><font color="green" id="welcome">{{welcomeMsg}}</font></h2>
-		<table border="1" width="200">
-			<thead>
-        		<tr>
-		          <th>ticketid</th>
-        		</tr>
-      		</thead>
-      		<tbody>
-        		<tr ng-repeat="transaction in transactions">
-          			<td>{{transaction.userID}}</td>
-        		</tr>
-      		</tbody>
-		</table>
-	</div> 
+			<table border="2" width="600" class="table table-hover">
+				<thead>
+	        		<tr>
+			          	<th>Transaction ID</th>
+			            <th>Ticket ID</th>
+			            <th>Price</th>
+			            <th>Quantity</th>
+			            <th>Reservation Number</th>
+	        		</tr>
+	      		</thead>
+	      		<tbody>
+	        		<tr ng-repeat="transaction in transactions">
+	          			<td>{{transaction.tranID}}</td>
+	          			<td>{{transaction.ticketID}}</td>
+	          			<td>{{transaction.price}}</td>
+	          			<td>{{transaction.qyt}}</td>
+	          			<td>{{transaction.reservation}}</td>
+	        		</tr>
+	      		</tbody>
+			</table>
+		</div> 
 	</tab>
-  </tabset>
-  
-  
-  
-  
-  
-</div>
+	
+	<!-- Personal Information -->
+	<tab heading="Personal Information" ng-click="getPersonInfoData('${userid}', 'ajaxResult')">
+		<div ng-show="canShow">
+			<table border="2" width="600" class="table table-hover">
+				<thead>
+	        		<tr>
+			          <th>Username</th>
+			          <th>First name</th>
+			          <th>Last name</th>
+			          <th>Email</th>
+			          <th>Birthday</th>
+	        		</tr>
+	      		</thead>
+	      		<tbody>
+	        		<tr ng-repeat="personinfo in personinfos">
+	          			<td>{{personinfo.userID}}</td>
+	          			<td>{{personinfo.fname}}</td>
+	          			<td>{{personinfo.lname}}</td>
+	          			<td>{{personinfo.email}}</td>
+	          			<td>{{personinfo.birthday}}</td>
+	        		</tr>
+	      		</tbody>
+			</table>
+		</div> 
+	</tab>
 
+  </tabset>
+   
+</div>
 
 </body>
 </html>

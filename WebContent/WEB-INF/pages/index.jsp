@@ -25,7 +25,9 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
           </button>
+          
           <a class="navbar-brand" href="http://zhengjunli.com">Railway Trading System</a>
         </div>
 

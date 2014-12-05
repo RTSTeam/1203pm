@@ -31,7 +31,6 @@ public class RegistrationService {
 	public RTSUserInfo process(RTSUser rtsuser) {
 		rd.save(rtsuser);
 		RTSUserInfo rtsuserInfo = new RTSUserInfo();
-		rtsuserInfo.setMsg(this.sayHello2(rtsuser));
 		return rtsuserInfo;
 	}
 }
